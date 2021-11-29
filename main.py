@@ -23,7 +23,31 @@ def createRandomKnapsack(items, maxWeight):
 
         # Add nextItem to knapsack
         ks.add(nextItem)
-    return ks        
+    return ks
+
+def findNextParents(gen):
+    parent1 = None
+    parent2 = None
+
+    for knap in gen.getKnapsacks():
+        if parent1 == None:
+            parent1 = knap
+            break
+        elif parent2 == None:
+            print("gotcha")
+            parent2 = knap
+            break
+        elif knap.getValue() > parent1.getValue():
+            parent1 = knap
+            break
+        elif knap.getValue() > parent2.getValue():
+            parent2 = knap
+            break
+    
+    print("\n\n\n Parents:")    
+    parent1.printOut()
+    parent2.printOut()
+
 
 def main():
     firstGen = generation()
@@ -32,6 +56,8 @@ def main():
         firstGen.add(createRandomKnapsack(itemList, maxWeight))
 
     firstGen.printKnapsacks()
+
+    findNextParents(firstGen)
     
         
 

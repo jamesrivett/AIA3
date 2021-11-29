@@ -9,10 +9,10 @@ class generation:
 
     def printKnapsacks(self):
         for knap in self.knapsacks:
-            print("\n\n")
-            print(knap.getItems())
-            print("Knapsack Weight: " + str(knap.getWeight()))
-            print("Knapsack Value: " + str(knap.getValue()))
+            knap.printOut()
+
+    def getKnapsacks(self):
+        return self.knapsacks
 
     def add(self, item):
         self.knapsacks.append(item)
