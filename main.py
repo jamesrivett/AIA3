@@ -3,6 +3,7 @@ from generation import *
 import random
 
 itemList = [[7, 7], [7, 3], [9, 3], [10, 9], [1, 2], [5, 7], [6, 7], [10, 6], [2, 6], [9, 8], [4, 7], [10, 8], [5, 3], [5, 2], [3, 7], [9, 9], [3, 3], [8, 1], [6, 6], [8, 7], [7, 3], [8, 5], [9, 2], [1, 7], [10, 2], [10, 1], [8, 2], [8, 6], [1, 4], [8, 7]]
+maxWeight = 100
 
 def createItemsList(length):
     itemList = []
@@ -22,16 +23,16 @@ def createRandomKnapsack(items, maxWeight):
 
         # Add nextItem to knapsack
         ks.add(nextItem)
-
     return ks        
 
 def main():
-    maxWeight = 100
+    firstGen = generation()
 
-    knap = createRandomKnapsack(itemList, maxWeight)
-    print(knap.getItems())
-    print(knap.getWeight())
+    for i in range(6):
+        firstGen.add(createRandomKnapsack(itemList, maxWeight))
 
+    firstGen.printKnapsacks()
+    
         
 
 if __name__ == "__main__":
