@@ -4,7 +4,7 @@ import random
 def createItemsList():
     items = []
     for i in range(30):
-        items.append([random.randint(1, 10), random.randint(1, 5)])
+        items.append([random.randint(1, 10), random.randint(1, 10)])
     return items
 
 def main():
