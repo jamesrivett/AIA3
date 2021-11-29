@@ -5,6 +5,9 @@ class knapsack:
     items = []
     weight = 0
 
+    def __init__(self):
+        pass
+
     def add(self, item):
         self.items.append(item)
         self.weight += item[0]
