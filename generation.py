@@ -1,4 +1,4 @@
-class genePool:
+class generation:
     knapsacks = []
 
     def __init__(self):
