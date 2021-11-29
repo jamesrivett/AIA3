@@ -24,7 +24,8 @@ class knapsack:
         return self.value
 
     def printOut(self):
-        print("\n\n")
+        print("----------------------------------------------------------------------")
         print(self.items)
         print("Knapsack Weight: " + str(self.weight))
-        print("Knapsack Value: " + str(self.weight))
+        print("Knapsack Value: " + str(self.value))
+        print("----------------------------------------------------------------------\n\n\n")

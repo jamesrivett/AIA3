@@ -32,19 +32,19 @@ def findNextParents(gen):
     for knap in gen.getKnapsacks():
         if parent1 == None:
             parent1 = knap
-            break
-        elif parent2 == None:
-            print("gotcha")
-            parent2 = knap
-            break
+            continue
         elif knap.getValue() > parent1.getValue():
+            parent2 = parent1
             parent1 = knap
-            break
+            continue
+        elif parent2 == None:
+            parent2 = knap
+            continue
         elif knap.getValue() > parent2.getValue():
             parent2 = knap
-            break
+            continue
     
-    print("\n\n\n Parents:")    
+    print("\n\n\nParents:")    
     parent1.printOut()
     parent2.printOut()
 
