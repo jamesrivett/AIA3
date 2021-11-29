@@ -16,17 +16,13 @@ def createRandomKnapsack(items, maxWeight):
         nextItem = items[random.randint(0, len(items) - 1)]
 
         # If nextItem brings ks over weight limit, stop
-        if ks.getWeight() >= maxWeight:
-            print("uhh")
+        if ks.getWeight() + nextItem[0] >= maxWeight:
             break
 
         # Add nextItem to knapsack
         ks.add(nextItem)
 
-    return ks
-
-
-        
+    return ks        
 
 def main():
     maxWeight = 100
