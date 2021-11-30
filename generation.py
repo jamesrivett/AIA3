@@ -22,3 +22,4 @@ class generation:
 
     def clear(self):
         self.knapsacks = []
+        

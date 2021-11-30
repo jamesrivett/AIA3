@@ -120,22 +120,17 @@ def main():
     for i in range(6):
         firstGen.add(createRandomKnapsack(itemList, maxWeight))
 
-    print("\n\n\n~~~~~~~~~~~~~ FIRST GENERATION ~~~~~~~~~~~~~")
-    firstGen.printOut()
-    print("\n Press enter to continue, interrupt to exit.")
-    input()
-
     thisGen = firstGen
-    iteration = 2
+    iteration = 0
     while True:
+        print("\n\n\n~~~~~~~~~~~~~ GENERATION # " + str(iteration) + " ~~~~~~~~~~~~~")
+        thisGen.printOut()
+        print("\n Press enter to continue, interrupt to exit.")
+        input()
+
         parents = findNextParents(thisGen)
         offspring = crossover(parents, maxWeight)
         nextGen = nextGeneration(offspring, itemList, maxWeight)
-
-        print("\n\n\n~~~~~~~~~~~~~ GENERATION # " + str(iteration) + " ~~~~~~~~~~~~~")
-        nextGen.printOut()
-        print("\n Press enter to continue, interrupt to exit.")
-        input()
         thisGen = nextGen
         iteration += 1
 

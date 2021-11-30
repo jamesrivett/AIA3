@@ -36,3 +36,4 @@ class knapsack:
         print("Knapsack Weight: " + str(self.weight))
         print("Knapsack Value: " + str(self.value))
         print("------------------------------------------------------------------------------------------------")
+        
