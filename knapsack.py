@@ -8,6 +8,8 @@ class knapsack:
 
     def __init__(self):
         self.items = []
+        self.weight = 0
+        self.value = 0
 
     def add(self, item):
         self.items.append(item)
