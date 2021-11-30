@@ -1,6 +1,8 @@
 from knapsack import *
 from generation import *
 import random
+from copy import deepcopy
+from time import sleep
 
 itemList = [[7, 7], [7, 3], [9, 3], [10, 9], [1, 2], [5, 7], [6, 7], [10, 6], [2, 6], [9, 8], [4, 7], [10, 8], [5, 3], [5, 2], [3, 7], [9, 9], [3, 3], [8, 1], [6, 6], [8, 7], [7, 3], [8, 5], [9, 2], [1, 7], [10, 2], [10, 1], [8, 2], [8, 6], [1, 4], [8, 7]]
 maxWeight = 100
@@ -82,8 +84,26 @@ def crossover(parents, maxWeight):
             pass
     return [offspring1, offspring2]
 
+# Accepts a knapsack as input, makes a copy, and replaces a random number of items with random items from the itemsList
+def mutate(knap, items, maxWeight):
+    mutant = deepcopy(knap)
+    magnitude = random.randint(0, len(mutant.getItems()))
+
+    # Remove an item at a random index and append a random item from items that doesn't break maxWeight
+    for i in range(magnitude):
+        mutant.removeAtIndex(random.randint(0, len(mutant.getItems()) - 1))
+        while True:
+            nextItem = items[random.randint(0, len(items) - 1)]
+            if mutant.getWeight() +  nextItem[0] < maxWeight:
+                mutant.add(nextItem)
+                break
+
+    return mutant
+
+
+
 def main():
-    firstGen = generation()
+    """ firstGen = generation()
 
     for i in range(6):
         firstGen.add(createRandomKnapsack(itemList, maxWeight))
@@ -94,7 +114,12 @@ def main():
     offsprings = crossover(parents, maxWeight)
     print("offspring:")
     for offspring in offsprings:
-        offspring.printOut()
+        offspring.printOut() """
+
+    firstknap = createRandomKnapsack(itemList, maxWeight)
+    firstknap.printOut()
+    secondknap = mutate(firstknap, itemList, maxWeight)
+    secondknap.printOut()
 
     
     

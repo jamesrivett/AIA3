@@ -16,6 +16,11 @@ class knapsack:
         self.weight += item[0]
         self.value += item[1]
     
+    def removeAtIndex(self, index):
+        self.weight -= self.items[index][0]
+        self.value -= self.items[index][1]
+        del self.items[index]
+    
     def getItems(self):
         return self.items
 
