@@ -120,12 +120,14 @@ def main():
     for i in range(6):
         firstGen.add(createRandomKnapsack(itemList, maxWeight))
 
+    print("First Gen:")
     firstGen.printOut()
 
     parents = findNextParents(firstGen)
     offspring = crossover(parents, maxWeight)
     secondGen = nextGeneration(offspring, itemList, maxWeight)
 
+    print("Second Gen:")
     secondGen.printOut()
 
     
