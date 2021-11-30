@@ -50,7 +50,7 @@ def findNextParents(gen):
     return [parent1, parent2]
 
 # Creates two offspring based on two parents and a randomly-selected crossover index
-def crossover(parents):
+def crossover(parents, maxWeight):
     offspring1 = knapsack()
     offspring2 = knapsack()
     parent1Items = parents[0].getItems()
@@ -65,15 +65,19 @@ def crossover(parents):
 
     # Append from parents to offspring, switching at crossIndex, ignoring index errors as one will run out sooner than the other
     for i in range(crossIndex):
-        offspring1.add(parent1Items[i])
-        offspring2.add(parent2Items[i])
+        if offspring1.getWeight() + parent1Items[i][0] < maxWeight:
+            offspring1.add(parent1Items[i])
+        if offspring2.getWeight() + parent2Items[i][0] < maxWeight:
+            offspring2.add(parent2Items[i])
     for i in range(crossIndex, len(parent1Items)):
         try:
-            offspring1.add(parent2Items[i])
+            if offspring1.getWeight() + parent2Items[i][0] < maxWeight:
+                offspring1.add(parent2Items[i])
         except IndexError:
             pass
         try:
-            offspring2.add(parent1Items[i])
+            if offspring2.getWeight() + parent1Items[i][0] < maxWeight:
+                offspring2.add(parent1Items[i])
         except IndexError:
             pass
     return [offspring1, offspring2]
@@ -87,7 +91,7 @@ def main():
     firstGen.printKnapsacks()
 
     parents = findNextParents(firstGen)
-    offsprings = crossover(parents)
+    offsprings = crossover(parents, maxWeight)
     print("offspring:")
     for offspring in offsprings:
         offspring.printOut()
