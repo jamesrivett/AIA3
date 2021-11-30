@@ -7,7 +7,7 @@ class knapsack:
     value = 0
 
     def __init__(self):
-        pass
+        self.items = []
 
     def add(self, item):
         self.items.append(item)
