@@ -5,7 +5,7 @@ class generation:
     knapsacks = []
 
     def __init__(self):
-        pass
+        self.knapsacks = []
 
     def printKnapsacks(self):
         for knap in self.knapsacks:
