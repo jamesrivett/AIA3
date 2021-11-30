@@ -97,29 +97,36 @@ def mutate(knap, items, maxWeight):
             if mutant.getWeight() +  nextItem[0] < maxWeight:
                 mutant.add(nextItem)
                 break
-
     return mutant
 
+def nextGeneration(firstTwoOffspring, items, maxWeight):
+    gen = generation()
 
+    # Add first two offspring to generation
+    gen.add(firstTwoOffspring[0])
+    gen.add(firstTwoOffspring[1])
+
+    # Add two mutants of each offspring to generation
+    gen.add(mutate(firstTwoOffspring[0], items, maxWeight))
+    gen.add(mutate(firstTwoOffspring[0], items, maxWeight))
+    gen.add(mutate(firstTwoOffspring[1], items, maxWeight))
+    gen.add(mutate(firstTwoOffspring[1], items, maxWeight))
+
+    return gen
 
 def main():
-    """ firstGen = generation()
+    firstGen = generation()
 
     for i in range(6):
         firstGen.add(createRandomKnapsack(itemList, maxWeight))
 
-    firstGen.printKnapsacks()
+    firstGen.printOut()
 
     parents = findNextParents(firstGen)
-    offsprings = crossover(parents, maxWeight)
-    print("offspring:")
-    for offspring in offsprings:
-        offspring.printOut() """
+    offspring = crossover(parents, maxWeight)
+    secondGen = nextGeneration(offspring, itemList, maxWeight)
 
-    firstknap = createRandomKnapsack(itemList, maxWeight)
-    firstknap.printOut()
-    secondknap = mutate(firstknap, itemList, maxWeight)
-    secondknap.printOut()
+    secondGen.printOut()
 
     
     
